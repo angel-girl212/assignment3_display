@@ -605,18 +605,3 @@ for (const feature of geojson.features) {
     .setLngLat(feature.geometry.coordinates)
     .addTo(map);
 }
-
-//add a geojson(json) layer to the map
-//replace everything within the < > appropriately 
-map.on('load', function() {
-  //the url (name) of the .json file - must be in same folder as the javascript var url = <USERNAME>.json';
-  //add a source
-  map.addSource('kyra.json', { type: 'geojson', data: url}); 
-  map.addLayer({
-    id: "kyra",
-    type: "line",
-    source: "kyra.json"
-  }
-}
-)
-;
