@@ -60,29 +60,30 @@ zoom: 12
 map.on('load', function() {
   //the url (name) of the .json file - must be in same folder as the javascript var url = <USERNAME>.json';
   //add a source
-  map.addSource('kyra.json', { type: 'geojson', data: url}); 
+  // Kyra's pathway
+  map.addSource('kyra', { type: 'geojson', data: url='kyra.json'}); 
   map.addLayer({
     id: "kyra",
     type: "line",
-    source: "kyra.json"
-  }
+    source: "kyra"
+  });
 
-  map.addSource('jack.json', { type: 'geojson', data: url}); 
+  // Jack's pathway             
+  map.addSource('jack', { type: 'geojson', data: url='jack.json'}); 
   map.addLayer({
     id: "jack",
     type: "line",
-    source: "jack.json"
-  }
+    source: "jack"
+  });
 
-  map.addSource('ben.json', { type: 'geojson', data: url}); 
+  // Ben's pathway             
+  map.addSource('ben', { type: 'geojson', data: url='ben.json'}); 
   map.addLayer({
     id: "ben",
     type: "line",
-    source: "ben.json"
-  }
-}
-)
-;
+    source: "ben"
+  });
+});
 </script>
 
 <script src="config.js"></script>
