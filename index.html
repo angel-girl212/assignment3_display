@@ -24,8 +24,8 @@
 
 #legend {
   position: absolute;
-  bottom: 50px;
-  left: 25px;
+  bottom: 55px;
+  left: 55px;
   z-index: 3;
   background: rgb(255, 230, 204);
   border: 2px solid #ffd11a;
@@ -55,22 +55,13 @@
 
 <div id="map"></div>
 
-<div id="legend" style="background:rgb(255, 230, 204); padding:15px; border-radius:0px;"> 
-  <h2 style= "text-align:center; font-family:Copperplate;font-size: 20px;" > Track our group members </h2> 
-    <ul> 
-      <li> 
-        <button type="button"  onclick="showKyra()" style = "background-color: pink; cursor: pointer; padding: 10px; font-size: 10px; margin: 2px; font-family: Copperplate"> Kyra's path </button> 
-      </li>
-      <li> 
-        <button type="button" onclick="showJack()" style = "background-color: pink; cursor: pointer; padding: 10px; font-size: 10px; margin: 2px; font-family: Copperplate"> Jack's path </button>
-      </li>
-      <li> 
-        <button type="button" onclick="showBen()" style = "background-color: pink; cursor: pointer; padding: 10px; font-size: 10px; margin: 2px; font-family: Copperplate"> Ben's path </button>
-      </li>
-      <li> 
-        <button type="button" onclick="showAll()" style = "background-color: pink; cursor: pointer; padding: 10px; font-size: 10px; margin: 2px; font-family: Copperplate"> All paths </button> 
-      </li> 
-    </ul>  
+<div id="legend" style="background:rgb(255, 230, 204); padding: 10px; border-radius:0px; "> 
+  <h2 style= "text-align:center; font-family:Copperplate;font-size: 15px;" > Track our group members </h2> 
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 5px;">
+       <button type="button"  onclick="showKyra()" style = "background-color: #ffd11a; cursor: pointer; padding: 10px; font-size: 10px; margin: 2px; font-family: Copperplate"> Kyra's path </button> 
+        <button type="button" onclick="showJack()" style = "background-color: #ffd11a; cursor: pointer; padding: 10px; font-size: 10px; margin: 2px; font-family: Copperplate"> Jack's path </button>
+        <button type="button" onclick="showBen()" style = "background-color: #ffd11a; cursor: pointer; padding: 10px; font-size: 10px; margin: 2px; font-family: Copperplate"> Ben's path </button>
+        <button type="button" onclick="showAll()" style = "background-color: #ffd11a; cursor: pointer; padding: 10px; font-size: 10px; margin: 2px; font-family: Copperplate"> All paths </button> 	</div> 
 </div> 
 
 <script>
