@@ -42,7 +42,6 @@
 <div id="map"></div>
 
 <script>
-
 // Mapbox access token for API authentication
 mapboxgl.accessToken = 'pk.eyJ1IjoiYW5nbGUta3ByIiwiYSI6ImNtZjJybG10YzFkbnUycG80N3J5cDVid2QifQ.SoIeeUn_3CNLmzU2cgtv1w';
 
@@ -56,6 +55,36 @@ center: [-73.56536765931561, 45.50226961493052], // downtown
 zoom: 12 
 }); 
 
+</script>
+<script>
+//add a geojson(json) layer to the map
+//replace everything within the < > appropriately 
+map.on('load', function() {
+  //the url (name) of the .json file - must be in same folder as the javascript var url = <USERNAME>.json';
+  //add a source
+  map.addSource('kyra.json', { type: 'geojson', data: url}); 
+  map.addLayer({
+    id: "kyra",
+    type: "line",
+    source: "kyra.json"
+  }
+
+  map.addSource('jack.json', { type: 'geojson', data: url}); 
+  map.addLayer({
+    id: "jack",
+    type: "line",
+    source: "jack.json"
+  }
+
+  map.addSource('ben.json', { type: 'geojson', data: url}); 
+  map.addLayer({
+    id: "ben",
+    type: "line",
+    source: "ben.json"
+  }
+}
+)
+;
 </script>
 
 <script src="config.js"></script>
