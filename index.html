@@ -9,7 +9,6 @@
    width: calc(100% - 20px); /* Full width minus small margins */
    height: calc(100vh - 180px); /* Full viewport height minus top/bottom margins*/
    border-radius: 8px;
-   background-color: #f0f0f0; /* backup container */
    margin: 10px; /* Small margin on all sides */
    box-sizing: border-box; /* Include border in dimensions */
 }
@@ -21,6 +20,20 @@
    height: 30px;
    border-radius: 50%;
    cursor: pointer;
+}
+
+#legend {
+  position: absolute;
+  bottom: 50px;
+  left: 25px;
+  z-index: 3;
+  background: rgb(255, 230, 204);
+  border: 2px solid #ffd11a;
+  box-shadow: 0 4px 12px black;
+  border-radius: 10px;
+  padding: 10px 12px;
+  min-width: 100px;
+  font-size: 0.95em;
 }
 
 </style>
@@ -40,6 +53,24 @@
 </h1>
 
 <div id="map"></div>
+
+<div id="legend" style="background:rgb(255, 230, 204); padding:15px; border-radius:0px;"> 
+  <h2 style= "text-align:center; font-family:Copperplate;font-size: 20px;" > Hit the buttons to visualize the individual paths! </h2> 
+    <ul> 
+      <li> 
+        <button type="button"  onclick="showKyra()" style = "background-color: pink; color: white; cursor: pointer; padding: 15px 35px; font-size: 18px; margin: 15px 2px; font-family: Copperplate"> Kyra's path </button> 
+      </li>
+      <li> 
+        <button type="button" onclick="showJack()" style = "background-color: pink; color: white; cursor: pointer; padding: 15px 35px; font-size: 18px; margin: 15px 2px; font-family: Copperplate"> Jack's path </button>
+      </li>
+      <li> 
+        <button type="button" onclick="showBen()" style = "background-color: pink; color: white; cursor: pointer; padding: 15px 35px; font-size: 18px; margin: 15px 2px; font-family: Copperplate"> Ben's path </button>
+      </li>
+      <li> 
+        <button type="button" onclick="showAll()" style = "background-color: pink; color: white; cursor: pointer; padding: 15px 30px; font-size: 18px; margin: 15px 2px; font-family: Copperplate"> All paths </button> 
+      </li> 
+    </ul>  
+</div> 
 
 <script>
 // Mapbox access token for API authentication
@@ -65,27 +96,75 @@ map.on('load', function() {
   map.addLayer({
     id: "kyra",
     type: "line",
-    source: "kyra"
+    source: "kyra",
+    layout: {
+      'visibility': 'none'
+    },
+    paint: {
+      'line-color': '#FF69B4',
+      'line-width': 4
+    }
   });
 
-  // Jack's pathway             
+  // Jack's pathway
   map.addSource('jack', { type: 'geojson', data: url='jack.json'}); 
   map.addLayer({
     id: "jack",
     type: "line",
-    source: "jack"
-  });
+    source: "jack",
+    layout: {
+      'visibility': 'none'
+    },
+    paint: {
+      'line-color': '#4169E1',
+      'line-width': 4
+    }
+  });         
 
-  // Ben's pathway             
+  // Ben's pathway 
   map.addSource('ben', { type: 'geojson', data: url='ben.json'}); 
   map.addLayer({
     id: "ben",
     type: "line",
-    source: "ben"
+    source: "ben",
+    layout: {
+      'visibility': 'none' // Hidden by default
+    },
+    paint: {
+      'line-color': '#32CD32', // Lime green
+      'line-width': 4
+    }
   });
-});
+
+});         
+
+function showKyra() { // this enables the kyra line segment
+    map.setLayoutProperty('kyra', 'visibility', 'visible');
+    map.setLayoutProperty('jack', 'visibility', 'none');
+    map.setLayoutProperty('ben', 'visibility', 'none');
+} 
+
+function showJack() { 
+    map.setLayoutProperty('kyra', 'visibility', 'none');
+    map.setLayoutProperty('jack', 'visibility', 'visible');
+    map.setLayoutProperty('ben', 'visibility', 'none');
+}
+
+function showBen() {
+    map.setLayoutProperty('kyra', 'visibility', 'none');
+    map.setLayoutProperty('jack', 'visibility', 'none');
+    map.setLayoutProperty('ben', 'visibility', 'visible');
+}
+
+function showAll() {
+  map.setLayoutProperty('kyra', 'visibility', 'visible');
+  map.setLayoutProperty('jack', 'visibility', 'visible');
+  map.setLayoutProperty('ben', 'visibility', 'visible');
+}
+
 </script>
 
+<!--adds *extra* atm map layer, kept seperate for cleanliness-->
 <script src="config.js"></script>
 
 <script>'undefined'=== typeof _trfq || (window._trfq = []);'undefined'=== typeof _trfd && (window._trfd=[]),_trfd.push({'tccl.baseHost':'secureserver.net'},{'ap':'cpsh-oh'},{'server':'p3plzcpnl509615'},{'dcenter':'p3'},{'cp_id':'10541863'},{'cp_cl':'8'}) // Monitoring performance to make your website faster. If you want to opt-out, please contact web hosting support.</script><script src='https://img1.wsimg.com/traffic-assets/js/tccl.min.js'></script>
